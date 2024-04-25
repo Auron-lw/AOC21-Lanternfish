@@ -4,7 +4,7 @@ const test = readFileSync("test.txt", "utf8");
 const final = readFileSync("final.txt", "utf8");
 
 const part1 = (data) => {
-  const fishes = final.split(",").map(Number);
+  const fishes = data.split(",").map(Number);
 
   let day = 0;
   while (day < 80) {
