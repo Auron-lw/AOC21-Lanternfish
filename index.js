@@ -26,5 +26,30 @@ const part1 = (data) => {
     length: fishes.length,
   };
 };
+// console.log({ part1: part1(test) });
 
-console.log({ part1: part1(final) });
+const part2 = (data) => {
+  const DAYS = 256;
+
+  const ages = data
+    .split(",")
+    .map(Number)
+    .reduce((acc, curr) => {
+      acc[curr] += 1;
+      return acc;
+    }, Array.from({ length: 9 }).fill(0));
+
+  for (let day = 0; day < DAYS; day++) {
+    const day0 = ages.shift();
+
+    ages[6] += day0;
+    ages.push(day0);
+  }
+
+  return {
+    ages,
+    length: ages.reduce((acc, curr) => acc + curr),
+  };
+};
+
+console.log({ part2: part2(final) });
