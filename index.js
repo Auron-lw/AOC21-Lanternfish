@@ -31,7 +31,7 @@ const part1 = (data) => {
 const part2 = (data) => {
   const DAYS = 256;
 
-  const ages = data
+  const filterFishByAges = data
     .split(",")
     .map(Number)
     .reduce((acc, curr) => {
@@ -40,15 +40,15 @@ const part2 = (data) => {
     }, Array.from({ length: 9 }).fill(0));
 
   for (let day = 0; day < DAYS; day++) {
-    const day0 = ages.shift();
+    const day0 = filterFishByAges.shift();
 
-    ages[6] += day0;
-    ages.push(day0);
+    filterFishByAges[6] += day0;
+    filterFishByAges.push(day0);
   }
 
   return {
-    ages,
-    length: ages.reduce((acc, curr) => acc + curr),
+    filterFishByAges,
+    length: filterFishByAges.reduce((acc, curr) => acc + curr),
   };
 };
 
